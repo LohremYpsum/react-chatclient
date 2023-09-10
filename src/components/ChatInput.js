@@ -1,4 +1,6 @@
 import { useState } from 'react'; 
+import { BiLogoTelegram } from "react-icons/bi";
+
 
 const ChatInput = ({ onSendMessage }) => {
   
@@ -31,7 +33,7 @@ const handleSubmit = (e) => {
                             : 'bg-blue-500 hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all'
                         }`}
                 >
-                Send
+                <BiLogoTelegram />
             </button>
 
         </div>
