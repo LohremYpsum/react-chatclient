@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import ChatInput from './ChatInput';
 import PulseLoader from 'react-spinners/PulseLoader';
 import mockupResponses from '../json/mockupResponses';
@@ -11,6 +11,19 @@ const ChatMessageWindow = () => {
   const [loading, setLoading] = useState(false); // Initially set loading to false
   
   const color = "#ffffff"
+
+  const chatContainerRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  };
+
+  useLayoutEffect( () => {
+    scrollToBottom();
+  }, [messages]);
+  
   
   const handleSendMessage = (message) => {
     const userMessage = {
@@ -38,6 +51,7 @@ const ChatMessageWindow = () => {
 
       // Set loading back to false after the response is generated
       setLoading(false);
+      scrollToBottom();
     }, randomDelay); // 4 seconds delay
   };
 
@@ -54,7 +68,9 @@ const ChatMessageWindow = () => {
       <BiBot /> Chatbot Mockup
     </h1>
       <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
-        <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
+        <div 
+        className="flex flex-col flex-grow h-0 p-4 overflow-auto"
+        ref={chatContainerRef}>
           {combinedMessages.map((message, index) => (
             <div
               className={`flex w-full max-w-xs ${
