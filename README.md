@@ -1,7 +1,9 @@
-# Getting Started with Create React App
+# About this Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+Simple Chat-Interface for a Chat-Client. Answers the App gives, are Placeholders only. 
+Purpose of this Project was to play around with React and Tailwind, aswell as using React-Icons / Spinners as 3rd-Party Packages.   
+The Project utilizes Tailwind-CSS and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 
 ## Available Scripts
 
 In the project directory, you can run:
